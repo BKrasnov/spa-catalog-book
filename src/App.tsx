@@ -1,13 +1,16 @@
 import React from 'react';
 import './sass/style.css'
-import Book from "./components/simple/Book";
+import BooksList from "./components/smart/BooksList";
+import {IBook} from "./core/book";
+
 
 function App() {
+    const books: IBook[] = [{
+        name: 'Отцы и дети', authors: 'Тургенев',
+    }]
   return (
       <div className="container">
-          <div className="books">
-              <Book/>
-          </div>
+          <BooksList books={books}/>
       </div>
   );
 }

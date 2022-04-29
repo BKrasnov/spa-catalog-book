@@ -1,19 +1,29 @@
-import React, {FC} from 'react';
+import React, {useEffect, useState} from 'react';
 import Book from "../simple/Book";
 import {IBook} from "../../core/book";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "../../core/base";
 
 
-interface BooksProps {
-    books: IBook[]
-}
 /** The BooksList component */
-const BooksList: FC<BooksProps> = ({books}) => {
+const BooksList = () => {
+    const [booksList, setBooksList] = useState<IBook[]>([])
+    const booksCollectionRef = collection(db, "books")
+
+    /** Function of asynchronous get of books from Firebase */
+    useEffect(()=>{
+        const getBooks = async () => {
+            const data = await getDocs(booksCollectionRef)
+            setBooksList(data.docs.map((doc: any)=>({...doc.data()})))
+        }
+        getBooks()
+    })
     return (
         <div className="books">
             {
-                books.map(props => {
+                booksList.map(book => {
                     return (
-                        <Book book={props}/>
+                        <Book book={book}/>
                     )
                 })
             }

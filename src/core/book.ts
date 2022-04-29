@@ -1,6 +1,6 @@
 /** type for the book */
 export interface IBook{
-    name: string,
+    title: string,
     authors: string,
     year?: number,
     rating?: number,

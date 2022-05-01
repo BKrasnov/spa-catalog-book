@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { collection, addDoc } from "firebase/firestore";
 import {db} from "../../core/base";
+import '../../sass/add-book.css'
 
 /** Component for adding a book */
 const AddBook = () => {
@@ -12,22 +13,35 @@ const AddBook = () => {
 
     /** the function of adding a book */
     const addBook = async () =>{
+        console.log('добавление книги')
         await addDoc(booksCollectionRef, {title, authors})
     }
     return (
-        <div>
-            <button onClick={addBook}>Добавить кнопку</button>
-            <input
+        <div className="block-add-book">
+            <button className="block-add-book__button-add" onClick={addBook}>Добавить книгу</button>
+            <input className="block-add-book__input"
                 placeholder="Title"
                 onChange={(event) => {
                     setTitle(event.target.value);
                 }}
             />
-            <input
+            <input className="block-add-book__input"
                 placeholder="Authors"
                 onChange={(event) => {
                     setAuthors(event.target.value);
                 }}
+            />
+            <input className="block-add-book__input"
+                   placeholder="Year"
+                   onChange={(event) => {
+                       setAuthors(event.target.value);
+                   }}
+            />
+            <input className="block-add-book__input"
+                   placeholder="ISBN"
+                   onChange={(event) => {
+                       setAuthors(event.target.value);
+                   }}
             />
         </div>
     );

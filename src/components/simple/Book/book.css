@@ -1,27 +1,22 @@
 .book {
   display: flex;
-  padding: 15px;
+  padding: 5px;
   border: solid 1px black;
   box-shadow: 0.2em 0.2em 3px rgba(122, 122, 122, 0.5);
-  font-size: 20px;
+  font-size: 15px;
   margin: 0 0 30px 0;
 }
-
-.book__image {
-  width: 100%;
-  border: solid 1px black;
+.book button {
+  height: 20px;
+  width: 20px;
+  background: red;
 }
 
 .book__description {
   width: 100%;
 }
 .book__description div {
-  padding: 10px;
-  margin: 0 0 10px 10px;
-  border: solid 1px black;
-}
-.book__description div:last-child {
-  margin: 0 0 0 10px;
+  padding: 5px;
 }
 
 /*# sourceMappingURL=book.css.map */

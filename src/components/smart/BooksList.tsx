@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import Book from "../simple/Book";
+import Book from "../simple/Book/Book";
 import {IBook} from "../../core/book";
 import {collection, getDocs} from "firebase/firestore";
 import {db} from "../../core/base";
+
 
 /** The BooksList component. */
 const BooksList = () => {
@@ -14,7 +15,7 @@ const BooksList = () => {
         const getBooks = async () => {
             console.log('Выполняется')
             const data = await getDocs(booksCollectionRef)
-            setBooksList(data.docs.map((doc: any)=>({...doc.data()})))
+            setBooksList(data.docs.map((doc: any)=>({...doc.data(), id: doc.id})))
         }
         getBooks()
             .catch(console.error)

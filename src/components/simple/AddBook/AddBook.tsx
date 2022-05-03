@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { collection, addDoc } from "firebase/firestore";
-import {db} from "../../core/base";
-import '../../sass/add-book.css'
+import {db} from "../../../core/base";
+import './add-book.css'
+
 
 /** Component for adding a book */
 const AddBook = () => {

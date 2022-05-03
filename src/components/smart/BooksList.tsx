@@ -15,11 +15,12 @@ const BooksList = () => {
         const getBooks = async () => {
             console.log('Выполняется')
             const data = await getDocs(booksCollectionRef)
-            setBooksList(data.docs.map((doc: any)=>({...doc.data(), id: doc.id})))
+            setBooksList(data.docs.map((doc: any)=>({...doc.data(), id: doc.id}))) //TODO fix any
         }
         getBooks()
             .catch(console.error)
     }, [])
+
     return (
         <div className="books">
             {

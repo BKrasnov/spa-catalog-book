@@ -9,7 +9,7 @@ interface BookProps{
 }
 
 /** book deletion function */
-const deleteBook = async (id: any) =>{
+const deleteBook = async (id: any) =>{ // TODO fix any
     const bookDoc = doc(db, "books", id)
     await deleteDoc(bookDoc)
 }
@@ -17,7 +17,7 @@ const deleteBook = async (id: any) =>{
 /** The Book component */
 const Book: React.FC<BookProps> = (props) => {
     const {
-        book : {title, authors, year, rating}
+        book : {title, authors, year, rating, isbn}
     } = props;
     return (
         <div className="book">
@@ -26,7 +26,7 @@ const Book: React.FC<BookProps> = (props) => {
                 <div>{authors === undefined ? 'Нет данных' : authors}</div>
                 <div>{year === undefined ? 'Нет данных' : year}</div>
                 <div>{rating === undefined ? 'Нет данных' : rating}</div>
-                <div>ISBN</div>
+                <div>{isbn === undefined ? 'Нет данных' : isbn}</div>
             </div>
             <button onClick={()=>{deleteBook(props.book.id).catch(console.error)}}>X</button>
         </div>

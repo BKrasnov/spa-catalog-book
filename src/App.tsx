@@ -1,7 +1,7 @@
 import React from "react";
 import "./sass/style.css"
 import BooksList from "./components/smart/BooksList";
-import AddBook from "./components/simple/AddBook/AddBook";
+import AddBookForm from "./components/simple/AddBook/AddBookForm";
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
       <div className="container">
           <BooksList/>
-          <AddBook/>
+          <AddBookForm/>
       </div>
   );
 }

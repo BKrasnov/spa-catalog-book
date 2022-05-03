@@ -6,19 +6,28 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {IBook} from "../../../core/book";
 
 
-/** Component for adding a book */
-const AddBookForm = () => {
+interface IProps{
+    updateBooks: () => Promise<void>
+}
+
+/** Component for adding a book
+ * @param props has function for update data*/
+const AddBookForm: React.FC<IProps> = (props) => {
+    const {updateBooks} = props
 
     /** Collection of books from the Firebase */
     const booksCollectionRef = collection(db, "books")
 
-    /** the function of adding a book */
-    const onSubmit: SubmitHandler<IBook> = async (data) => {
-        await addDoc(booksCollectionRef, {...data})
+    /** The function of adding a book. */
+    const onSubmit: SubmitHandler<IBook> = (data) => {
+        addDoc(booksCollectionRef, {...data})
+            .then(()=>{updateBooks().catch(console.error)})
     }
 
     /** objects for working with react-hook-form */
-    const {register, handleSubmit, formState: {errors}} = useForm<IBook>()
+    const {register, handleSubmit, formState: {errors, isValid}} = useForm<IBook>({
+        mode: "onChange"
+    })
 
     return (
         <div>
@@ -53,7 +62,7 @@ const AddBookForm = () => {
                     })}
                 />
                 {errors?.isbn && (<div className="errors">{errors.isbn.message}</div>)}
-                <input type="submit"/>
+                <input type="submit" disabled={!isValid}/>
             </form>
         </div>
     );

@@ -17,7 +17,7 @@ const deleteBook = async (id: any) =>{ // TODO fix any
 /** The Book component */
 const Book: React.FC<BookProps> = (props) => {
     const {
-        book : {title, authors, year, rating, isbn}
+        book : {id, title, authors, year, rating, isbn}
     } = props;
     return (
         <div className="book">
@@ -28,7 +28,7 @@ const Book: React.FC<BookProps> = (props) => {
                 <div>{rating === undefined ? 'Нет данных' : rating}</div>
                 <div>{isbn === undefined ? 'Нет данных' : isbn}</div>
             </div>
-            <button onClick={()=>{deleteBook(props.book.id).catch(console.error)}}>X</button>
+            <button onClick={()=>{deleteBook(id).catch(console.error)}}>X</button>
         </div>
     );
 };

@@ -23,7 +23,7 @@ function App() {
     }, [])
   return (
       <div className="container">
-          <BooksList booksList={booksList}/>
+          <BooksList booksList={booksList} updateBooks={getBooks}/>
           <AddBookForm updateBooks={getBooks}/>
       </div>
   );

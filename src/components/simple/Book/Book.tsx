@@ -6,19 +6,21 @@ import {deleteDoc, doc} from "firebase/firestore";
 
 interface BookProps{
     book: IBook;
-}
-
-/** book deletion function */
-const deleteBook = async (id: any) =>{ // TODO fix any
-    const bookDoc = doc(db, "books", id)
-    await deleteDoc(bookDoc)
+    updateBooks: () => Promise<void>
 }
 
 /** The Book component */
 const Book: React.FC<BookProps> = (props) => {
     const {
-        book : {id, title, authors, year, rating, isbn}
+        book : {id, title, authors, year, rating, isbn}, updateBooks
     } = props;
+
+    /** book deletion function */
+    const deleteBook = async (id: any) =>{ // TODO fix any
+        const bookDoc = doc(db, "books", id)
+        await deleteDoc(bookDoc)
+        await updateBooks()
+    }
     return (
         <div className="book">
             <div className="book__description">

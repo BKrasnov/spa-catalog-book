@@ -1,0 +1,20 @@
+.form-adding-book {
+  height: 300px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+.form-adding-book input {
+  padding: 10px 2px;
+  margin: 5px 0;
+}
+.form-adding-book button {
+  height: 50px;
+  margin: 20px 0;
+}
+
+.errors {
+  color: red;
+}
+
+/*# sourceMappingURL=add-book.css.map */

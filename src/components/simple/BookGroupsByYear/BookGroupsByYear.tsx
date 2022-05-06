@@ -18,7 +18,7 @@ const BookGroupsByYear: React.FC<IBookGroupsProps> = (props) => {
                 groupBooks(books).map(bookList => {
                     return (
                         <div className="book-groups">
-                            <h1>{bookList.year === undefined ? "Нет года" : `Книги ${bookList.year} года`}</h1>
+                            <h1>{bookList.year === undefined ? "No year" : `Books of ${bookList.year}`}</h1>
                             <Book books={bookList.books} updateBooks={updateBooks}/>
                         </div>
                     )

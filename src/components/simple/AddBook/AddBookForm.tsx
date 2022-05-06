@@ -2,7 +2,7 @@ import React from 'react';
 import {collection, addDoc} from "firebase/firestore";
 import {db} from "../../../core/base";
 import './add-book.css'
-import {SubmitHandler, useForm} from "react-hook-form";
+import {useForm, SubmitHandler} from "react-hook-form";
 import {IBook} from "../../../core/book";
 
 
@@ -10,12 +10,13 @@ interface IProps{
     updateBooks: () => Promise<void>
 }
 
+
 /** Component for adding a book
- * @param props has function for update data*/
+ * @param props has function for update data. */
 const AddBookForm: React.FC<IProps> = (props) => {
     const {updateBooks} = props
 
-    /** Collection of books from the Firebase */
+    /** Collection of books from the Firebase. */
     const booksCollectionRef = collection(db, "books")
 
     /** The function of adding a book. */
@@ -24,7 +25,7 @@ const AddBookForm: React.FC<IProps> = (props) => {
             .then(()=>{updateBooks().catch(console.error)})
     }
 
-    /** objects for working with react-hook-form */
+    /** objects for working with react-hook-form. */
     const {register, handleSubmit, formState: {errors, isValid}} = useForm<IBook>({
         mode: "onChange"
     })
@@ -37,6 +38,7 @@ const AddBookForm: React.FC<IProps> = (props) => {
                     placeholder="Title"
                     {...register("title", {
                         required: true,
+                        maxLength: 100,
                     })}
                 />
                 <input
@@ -49,6 +51,16 @@ const AddBookForm: React.FC<IProps> = (props) => {
                     placeholder="Year"
                     {...register("year", {
                         required: true,
+                        min: 1800,
+                        max: 2022
+                    })}
+                />
+                <input
+                    placeholder="rating"
+                    {...register("rating", {
+                        required: true,
+                        min: 0,
+                        max: 10
                     })}
                 />
                 <input

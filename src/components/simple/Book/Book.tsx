@@ -33,12 +33,11 @@ const Book: React.FC<BookProps> = (props) => {
                                 <div>{book.year === undefined ? 'Нет данных' : book.year}</div>
                                 <div>{book.rating === undefined ? 'Нет данных' : book.rating}</div>
                                 <div>{book.isbn === undefined ? 'Нет данных' : book.isbn}</div>
-                                <button onClick={() => {
-                                    deleteBook(book.id).catch(console.error)
-                                }}>X
-                                </button>
                             </div>
-
+                            <button onClick={() => {
+                                deleteBook(book.id).catch(console.error)
+                            }}>X
+                            </button>
                         </div>
                     );
                 })

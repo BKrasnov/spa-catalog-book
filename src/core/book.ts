@@ -3,7 +3,8 @@ export interface IBook{
     id: number,
     title: string,
     authors: string,
-    year?: number,
-    rating?: number,
-    isbn?: number
+    year: number,
+    rating: number,
+    isbn: number
 }
+

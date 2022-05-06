@@ -5,32 +5,47 @@ import {db} from "../../../core/base";
 import {deleteDoc, doc} from "firebase/firestore";
 
 interface BookProps{
-    book: IBook;
-}
-
-/** book deletion function */
-const deleteBook = async (id: any) =>{ // TODO fix any
-    const bookDoc = doc(db, "books", id)
-    await deleteDoc(bookDoc)
+    books: IBook[];
+    updateBooks: () => Promise<void>
 }
 
 /** The Book component */
 const Book: React.FC<BookProps> = (props) => {
     const {
-        book : {id, title, authors, year, rating, isbn}
+        books, updateBooks
     } = props;
+
+    /** book deletion function */
+    const deleteBook = async (id: any) => { // TODO fix any TODO fix async/await
+        const bookDoc = doc(db, "books", id)
+        await deleteDoc(bookDoc)
+        await updateBooks()
+    }
     return (
-        <div className="book">
-            <div className="book__description">
-                <div>{title === undefined ? 'Нет данных' : title}</div>
-                <div>{authors === undefined ? 'Нет данных' : authors}</div>
-                <div>{year === undefined ? 'Нет данных' : year}</div>
-                <div>{rating === undefined ? 'Нет данных' : rating}</div>
-                <div>{isbn === undefined ? 'Нет данных' : isbn}</div>
-            </div>
-            <button onClick={()=>{deleteBook(id).catch(console.error)}}>X</button>
-        </div>
+        <>
+            {
+                books.map(book => {
+                    return (
+                        <div className="book">
+                            <div className="book__description">
+                                <div>{book.title === undefined ? 'Нет данных' : book.title}</div>
+                                <div>{book.authors === undefined ? 'Нет данных' : book.authors}</div>
+                                <div>{book.year === undefined ? 'Нет данных' : book.year}</div>
+                                <div>{book.rating === undefined ? 'Нет данных' : book.rating}</div>
+                                <div>{book.isbn === undefined ? 'Нет данных' : book.isbn}</div>
+                                <button onClick={() => {
+                                    deleteBook(book.id).catch(console.error)
+                                }}>X
+                                </button>
+                            </div>
+
+                        </div>
+                    );
+                })
+            }
+        </>
     );
+
 };
 
 export default Book;

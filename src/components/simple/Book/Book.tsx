@@ -9,13 +9,13 @@ interface BookProps{
     updateBooks: () => Promise<void>
 }
 
-/** The Book component */
+/** The Book component. */
 const Book: React.FC<BookProps> = (props) => {
     const {
         books, updateBooks
     } = props;
 
-    /** book deletion function */
+    /** book deletion function. */
     const deleteBook = async (id: any) => { // TODO fix any TODO fix async/await
         const bookDoc = doc(db, "books", id)
         await deleteDoc(bookDoc)

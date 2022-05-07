@@ -12,7 +12,7 @@ interface IProps{
 
 
 /** Component for adding a book
- * @param props has function for update data. */
+ * @param props contains an update function. */
 const AddBookForm: React.FC<IProps> = (props) => {
     const {updateBooks} = props
 

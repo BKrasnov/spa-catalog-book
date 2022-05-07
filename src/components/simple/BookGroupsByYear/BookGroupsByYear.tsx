@@ -2,7 +2,7 @@ import React from 'react';
 import {IBook} from "../../../core/book";
 import {groupBooks} from "../../../core/service/BooksService";
 import "./bookGroupsByYear.css"
-import Book from "../Book/Book";
+import BookList from "../BookList/BookList";
 
 interface IBookGroupsProps {
     books: IBook[];
@@ -16,11 +16,11 @@ const BookGroupsByYear: React.FC<IBookGroupsProps> = (props) => {
     return (
         <div>
             {
-                groupBooks(books).map((bookList, id) => {
+                groupBooks(books).map((bookList) => {
                     return (
                         <div className="book-groups">
                             <h1>{bookList.year === undefined ? "No year" : `Books of ${bookList.year}`}</h1>
-                                <Book key={id} books={bookList.books} updateBooks={updateBooks}/>
+                                <BookList books={bookList.books} updateBooks={updateBooks}/>
                         </div>
                     )
                 })

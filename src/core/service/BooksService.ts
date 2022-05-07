@@ -14,7 +14,7 @@ function compare(a: IBook, b: IBook) {
     return 0
 }
 
-/** Book grouping function. */
+/** BookList grouping function. */
 export function groupBooks(books: IBook[]) {
     const years = Array.from(new Set(books.map(book => book.year)));
     years.sort((prevYear, nextYear)=>nextYear-prevYear)

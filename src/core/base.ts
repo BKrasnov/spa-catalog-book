@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import {collection, getFirestore} from "firebase/firestore";
 
-/** Your web app's Firebase configuration */
+/** Your web app's Firebase configuration. */
 const firebaseConfig = {
     apiKey: "AIzaSyDCHBi2DhRmuVXkSxfvY00SleiCeAf7LD8",
     authDomain: "spa-book-catalog.firebaseapp.com",
@@ -11,8 +11,11 @@ const firebaseConfig = {
     appId: "1:497835206317:web:2ff9febeb31a572da30824"
 };
 
-/**  Initialize Firebase */
+/**  Initialize Firebase. */
 const app = initializeApp(firebaseConfig);
 
-/**  create a db */
+/**  create a db. */
 export const db = getFirestore(app);
+
+/** Collection of books from the Firebase. */
+export const booksCollectionRef = collection(db, "books")

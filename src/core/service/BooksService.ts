@@ -14,16 +14,47 @@ function compare(a: IBook, b: IBook) {
     return 0
 }
 
-/** Book grouping function. */
-export function groupBooks(booksList: IBook[]) {
-    const years = Array.from(new Set(booksList.map(book => book.year)));
+/** BookList grouping function. */
+export function groupBooks(books: IBook[]) {
+    const years = Array.from(new Set(books.map(book => book.year)));
     years.sort((prevYear, nextYear)=>nextYear-prevYear)
-    booksList.sort(compare)
+    books.sort(compare)
     return years.map(year => {
         const years = year ? {year: year} : null;
         return {
             ...years,
-            books: booksList.filter(book => book.year === year)
+            books: books.filter(book => book.year === year)
         };
     });
+}
+
+/** The function of filtering books by year. */
+function filter(value: number){
+    if(2022 - value >= 3){
+        return value
+    }
+}
+/** Recommended books search function. */
+export function selectRecommendedBook(books: IBook[]){
+    const max = books.reduce((acc, val) => (filter(val.year) && val.rating > acc ? val.rating : acc), 0);
+    const booksRecommended = books.filter(book => {
+        const differenceBetweenYears = 2022 - book.year
+        if (differenceBetweenYears >= 3 && book.rating === max) {
+            return book
+        }
+        return false
+    })
+    const bookRecommended = Math.floor(Math.random() * booksRecommended.length)
+    if(booksRecommended[bookRecommended] === undefined){ // TODO fix the undefined check
+        const booksUndefined: IBook = {
+            id: 1,
+            title: 'загрузка...',
+            authors: 'загрузка...',
+            year: 0,
+            rating: 0,
+            isbn: 0,
+        }
+        return booksUndefined
+    }
+    return(booksRecommended[bookRecommended])
 }

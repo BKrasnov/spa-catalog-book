@@ -5,6 +5,7 @@ import {IBook} from "./core/book";
 import {collection, getDocs} from "firebase/firestore";
 import {db} from "./core/base";
 import BookGroupsByYear from "./components/simple/BookGroupsByYear/BookGroupsByYear";
+import BookRecommended from "./components/simple/BookRecommended/BookRecommended";
 
 
 function App() {
@@ -21,12 +22,15 @@ function App() {
         getBooks()
             .catch(console.error)
     }, [])
-  return (
-      <div className="container">
-          <BookGroupsByYear books={books} updateBooks={getBooks}/>
-          <AddBookForm updateBooks={getBooks}/>
-      </div>
-  );
+    return (
+        <div className="container">
+            <BookRecommended books={books} updateBooks={getBooks}/>
+            <div className="flex">
+                <BookGroupsByYear books={books} updateBooks={getBooks}/>
+                <AddBookForm updateBooks={getBooks}/>
+            </div>
+        </div>
+    );
 }
 
 export default App;

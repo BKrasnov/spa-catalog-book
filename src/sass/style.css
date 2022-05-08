@@ -9,6 +9,9 @@
   margin: 0 auto;
   padding: 30px;
   background: #F0F0F0;
+}
+
+.flex {
   display: flex;
   justify-content: space-between;
 }

@@ -4,27 +4,29 @@ import {selectRecommendedBook} from "../../../core/service/BooksService";
 import Book from "../../ui/Book/Book";
 
 
-interface BookProps{
+interface BookProps {
     books: IBook[];
-    updateBooks: () => Promise<void>
+    updateBooks: () => Promise<void>;
 }
 
-
-/** Book Recommended Component. */
+/**
+ * Book Recommended Component.
+ * @param props contains an update function and a list of books.
+ */
 const BookRecommended: React.FC<BookProps> = (props) => {
     const {
         books, updateBooks
-    } = props
+    } = props;
+    const bookRecommended = selectRecommendedBook(books);
 
-    const bookRecommended = selectRecommendedBook(books)
     return (
         <>
             {books.length ? (
                 <>
                     <h1>We recommend you to read</h1>
-                    <Book key={bookRecommended.id} book={bookRecommended} updateBooks={updateBooks} />
+                    <Book key={bookRecommended.id} book={bookRecommended} updateBooks={updateBooks}/>
                 </>
-            ):("Загрузка...")}
+            ) : ("Загрузка...")}
         </>
     );
 };

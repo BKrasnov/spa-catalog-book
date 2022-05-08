@@ -4,21 +4,25 @@ import {deleteDoc, doc} from "firebase/firestore";
 import {db} from "../../../core/base";
 import '../../ui/Book/book.css'
 
+
 interface BookProps{
     book: IBook;
     updateBooks: () => Promise<void>
 }
+
 const Book: React.FC<BookProps> = (props) => {
     const {
         book, updateBooks
     } = props;
 
-    /** book deletion function. */
-    const deleteBook = async (id: any) => { // TODO fix any TODO fix async/await
-        const bookDoc = doc(db, "books", id)
-        await deleteDoc(bookDoc)
-        await updateBooks()
-    }
+    /** Book deletion function. */
+    const deleteBook = (id: any) => {
+        const bookDoc = doc(db, "books", id);
+        deleteDoc(bookDoc).then(() => {
+            updateBooks().catch(console.error);
+        });
+    };
+
     return (
         <div className="book">
             <div className="book__description">
@@ -29,7 +33,7 @@ const Book: React.FC<BookProps> = (props) => {
                 <div>{book.isbn === undefined ? 'Нет данных' : book.isbn}</div>
             </div>
             <button onClick={() => {
-                deleteBook(book.id).catch(console.error)
+                deleteBook(book.id)
             }}>X
             </button>
         </div>

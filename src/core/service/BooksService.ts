@@ -45,16 +45,5 @@ export function selectRecommendedBook(books: IBook[]){
         return false
     })
     const bookRecommended = Math.floor(Math.random() * booksRecommended.length)
-    if(booksRecommended[bookRecommended] === undefined){ // TODO fix the undefined check
-        const booksUndefined: IBook = {
-            id: 1,
-            title: 'загрузка...',
-            authors: 'загрузка...',
-            year: 0,
-            rating: 0,
-            isbn: 0,
-        }
-        return booksUndefined
-    }
     return(booksRecommended[bookRecommended])
 }

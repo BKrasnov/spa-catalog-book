@@ -19,8 +19,12 @@ const BookRecommended: React.FC<BookProps> = (props) => {
     const bookRecommended = selectRecommendedBook(books)
     return (
         <>
-            <h1>We recommend you to read</h1>
-            <Book key={bookRecommended.id} book={bookRecommended} updateBooks={updateBooks} />
+            {books.length ? (
+                <>
+                    <h1>We recommend you to read</h1>
+                    <Book key={bookRecommended.id} book={bookRecommended} updateBooks={updateBooks} />
+                </>
+            ):("Загрузка...")}
         </>
     );
 };

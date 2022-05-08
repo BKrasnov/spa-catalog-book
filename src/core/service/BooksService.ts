@@ -1,49 +1,62 @@
 import {IBook} from "../book";
 
 
-/** The function of sorting books by title. */
-function compare(a: IBook, b: IBook) {
-    const titleA = a.title.toUpperCase();
-    const titleB = b.title.toUpperCase();
-    if (titleA > titleB) {
-        return 1
+/** The function of comparing books by name. */
+function compareTitle(prev: IBook, next: IBook ) {
+    const nextTitle = next.title.toUpperCase();
+    const prevTitle = prev.title.toUpperCase();
+    if (prevTitle > nextTitle) {
+        return 1;
     }
-    if (titleA < titleB) {
-        return -1
+    if (prevTitle < nextTitle) {
+        return -1;
     }
-    return 0
+    return 0;
 }
 
-/** BookList grouping function. */
-export function groupBooks(books: IBook[]) {
+/**
+ * Books grouping function.
+ * @param books book collection.
+ */
+export function composeBooks(books: IBook[]) {
     const years = Array.from(new Set(books.map(book => book.year)));
-    years.sort((prevYear, nextYear)=>nextYear-prevYear)
-    books.sort(compare)
+    years.sort((prevYear, nextYear) => nextYear - prevYear);
+    books.sort(compareTitle);
     return years.map(year => {
         const years = year ? {year: year} : null;
         return {
             ...years,
-            books: books.filter(book => book.year === year)
+            books: books.filter(book => book.year === year),
         };
     });
 }
 
-/** The function of filtering books by year. */
-function filter(value: number){
-    if(2022 - value >= 3){
-        return value
+/**
+ * The function of filtering books by year.
+ * @param yearPublication year of publication of the book.
+ */
+function filterYears(yearPublication: number) {
+    const currentYear = 2022;
+    if (currentYear - yearPublication >= 3) {
+        return yearPublication;
     }
+    return false;
 }
-/** Recommended books search function. */
-export function selectRecommendedBook(books: IBook[]){
-    const max = books.reduce((acc, val) => (filter(val.year) && val.rating > acc ? val.rating : acc), 0);
-    const booksRecommended = books.filter(book => {
-        const differenceBetweenYears = 2022 - book.year
-        if (differenceBetweenYears >= 3 && book.rating === max) {
-            return book
-        }
-        return false
-    })
-    const bookRecommended = Math.floor(Math.random() * booksRecommended.length)
-    return(booksRecommended[bookRecommended])
+
+/**
+ * Recommended books search function.
+ * @param books book collection.
+ */
+export function selectRecommendedBook(books: IBook[]) {
+    const maxRating = books
+        .reduce((acc, val) => (filterYears(val.year) && val.rating > acc ? val.rating : acc), 0);
+    const booksRecommended = books
+        .filter(book => {
+            if (filterYears(book.year) >= 3 && book.rating === maxRating) {
+                return book
+            }
+            return false
+        });
+    const bookRecommended = Math.floor(Math.random() * booksRecommended.length);
+    return (booksRecommended[bookRecommended]);
 }

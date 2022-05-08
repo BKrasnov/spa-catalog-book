@@ -38,12 +38,23 @@ function filter(value: number){
 export function selectRecommendedBook(books: IBook[]){
     const max = books.reduce((acc, val) => (filter(val.year) && val.rating > acc ? val.rating : acc), 0);
     const booksRecommended = books.filter(book => {
-            const differenceBetweenYears = 2022 - book.year
-            if (differenceBetweenYears >= 3 && book.rating === max) {
-                return book
-            }
-            return false
-        })
+        const differenceBetweenYears = 2022 - book.year
+        if (differenceBetweenYears >= 3 && book.rating === max) {
+            return book
+        }
+        return false
+    })
     const bookRecommended = Math.floor(Math.random() * booksRecommended.length)
+    if(booksRecommended[bookRecommended] === undefined){ // TODO fix the undefined check
+        const booksUndefined: IBook = {
+            id: 1,
+            title: 'загрузка...',
+            authors: 'загрузка...',
+            year: 0,
+            rating: 0,
+            isbn: 0,
+        }
+        return booksUndefined
+    }
     return(booksRecommended[bookRecommended])
 }

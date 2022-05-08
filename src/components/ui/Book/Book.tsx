@@ -12,6 +12,7 @@ const Book: React.FC<BookProps> = (props) => {
     const {
         book, updateBooks
     } = props;
+
     /** book deletion function. */
     const deleteBook = async (id: any) => { // TODO fix any TODO fix async/await
         const bookDoc = doc(db, "books", id)

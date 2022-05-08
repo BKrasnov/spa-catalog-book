@@ -24,9 +24,11 @@ function App() {
     }, [])
     return (
         <div className="container">
-            <BookRecommended books={books}/>
-            <BookGroupsByYear books={books} updateBooks={getBooks}/>
-            <AddBookForm updateBooks={getBooks}/>
+            <BookRecommended books={books} updateBooks={getBooks}/>
+            <div className="flex">
+                <BookGroupsByYear books={books} updateBooks={getBooks}/>
+                <AddBookForm updateBooks={getBooks}/>
+            </div>
         </div>
     );
 }

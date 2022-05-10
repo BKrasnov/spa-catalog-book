@@ -6,10 +6,18 @@
   font-size: 15px;
   margin: 0 0 30px 0;
 }
-.book button {
-  height: 20px;
-  width: 20px;
+
+.book__button-delete {
+  height: 30px;
+  width: 30px;
   background: red;
+}
+
+.book__button-update {
+  background: green;
+  height: 30px;
+  margin-right: 5px;
+  padding: 6px 8px;
 }
 
 .book__description {

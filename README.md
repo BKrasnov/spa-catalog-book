@@ -1,5 +1,14 @@
 # Test assignment for an internship
 
-The project is being developed on React
-The SASS preprocessor is also used
+This project was bootstrapped with **React**.
 
+## Available functionality
+
+1. Adding a book
+2. Deleting a book
+3. Changing the book
+
+CRUD operations and database are implemented using from **Firebase**.\
+Validation is implemented using **react-hook-form**.\
+The **SASS** preprocessor was used for styling.\
+Commenting was used with **JSDoc**.

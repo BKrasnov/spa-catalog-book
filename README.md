@@ -1,4 +1,4 @@
-# Test assignment for an internship
+# Test task
 
 This project was bootstrapped with **React**.
 

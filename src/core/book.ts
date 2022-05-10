@@ -1,8 +1,8 @@
-/** type for the book */
+/** type for the book. */
 export interface IBook{
 
     /** Book id. */
-    id: number,
+    readonly id: number,
 
     /** Title of the book. */
     title: string,
@@ -17,6 +17,6 @@ export interface IBook{
     rating: number,
 
     /** ISBN book. */
-    isbn: number
+    readonly isbn: number
 }
 

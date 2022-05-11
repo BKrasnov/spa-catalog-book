@@ -19,6 +19,7 @@ function compareTitle(prev: IBook, next: IBook ) {
 /**
  * Books grouping function.
  * @param books book collection.
+ * @returns {object} an object with a year and books.
  */
 export function composeBooks(books: IBook[]) {
     const years = Array.from(new Set(books.map(book => book.year)));
@@ -48,6 +49,7 @@ function filterYears(yearPublication: number) {
 /**
  * Recommended books search function.
  * @param books book collection.
+ * @returns {IBook} book - random recommended book.
  */
 export function selectRecommendedBook(books: IBook[]) {
     const initialMaxValue = 0;
@@ -56,7 +58,7 @@ export function selectRecommendedBook(books: IBook[]) {
     const booksRecommended = books
         .filter(book => {
             if (filterYears(book.year) >= differenceBetweenYears && book.rating === maxRating) {
-                return book;
+                    return book;
             }
             return false;
         });

@@ -11,6 +11,10 @@ interface BookProps{
     updateBooks: () => Promise<void>
 }
 
+/**
+ * Book component.
+ * @param props contains a book and an update function
+ */
 const Book: React.FC<BookProps> = (props) => {
     const {
         book, updateBooks

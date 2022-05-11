@@ -1,7 +1,7 @@
 import React from 'react';
-import {IBook} from "../../../core/book";
-import {selectRecommendedBook} from "../../../core/service/BooksService";
-import Book from "../../ui/Book/Book";
+import {IBook} from '../../../core/book';
+import {selectRecommendedBook} from '../../../core/service/BooksService';
+import Book from '../../ui/Book/Book';
 
 
 interface BookProps {

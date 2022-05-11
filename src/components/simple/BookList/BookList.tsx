@@ -1,11 +1,11 @@
 import React from 'react';
-import {IBook} from "../../../core/book";
-import Book from "../../ui/Book/Book"
+import {IBook} from '../../../core/book';
+import Book from '../../ui/Book/Book'
 
 
 interface BookListProps{
     books: IBook[];
-    updateBooks: () => Promise<void>
+    updateBooks: () => Promise<void>;
 }
 
 /**

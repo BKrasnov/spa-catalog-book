@@ -1,8 +1,8 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
-import "./modal.css"
-import {IBook} from "../../../core/book";
-import {doc, updateDoc} from "firebase/firestore";
-import {db} from "../../../core/base";
+import './modal.css';
+import {IBook} from '../../../core/book';
+import {doc, updateDoc} from 'firebase/firestore';
+import {db} from '../../../core/base';
 
 
 interface ModalProps {
@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         year: book.year,
         rating: book.rating,
         isbn: book.isbn,
-    })
+    });
     const {title, authors, year, rating} = value;
 
     /** data modification function */
@@ -38,7 +38,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 
     /** The function of updating the book data. */
     const editBookData = (id: any) => {
-        const bookDoc = doc(db, "books", id);
+        const bookDoc = doc(db, 'books', id);
         updateDoc(bookDoc, {
             title: title,
             authors: authors,
@@ -51,33 +51,33 @@ const Modal: React.FC<ModalProps> = (props) => {
 
     return (
         <div>
-            <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
-                <div className="modal__content" onClick={e => e.stopPropagation()}>
+            <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
+                <div className='modal__content' onClick={e => e.stopPropagation()}>
                     <input
-                        placeholder="Title"
-                        name="title"
-                        autoComplete="off"
+                        placeholder='Title'
+                        name='title'
+                        autoComplete='off'
                         onChange={handleChange('title')}
                     />
                     <input
-                        type="text"
-                        placeholder="Authors book"
-                        name="authors"
-                        autoComplete="off"
+                        type='text'
+                        placeholder='Authors book'
+                        name='authors'
+                        autoComplete='off'
                         onChange={handleChange('authors')}
                     />
                     <input
-                        type="text"
-                        placeholder="Year book"
-                        name="year"
-                        autoComplete="off"
+                        type='text'
+                        placeholder='Year book'
+                        name='year'
+                        autoComplete='off'
                         onChange={handleChange('year')}
                     />
                     <input
-                        type="text"
-                        placeholder="Rating book"
-                        name="rating"
-                        autoComplete="off"
+                        type='text'
+                        placeholder='Rating book'
+                        name='rating'
+                        autoComplete='off'
                         onChange={handleChange('rating')}
                     />
                     <button onClick={() => {

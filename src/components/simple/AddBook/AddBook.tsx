@@ -1,10 +1,10 @@
 import React from 'react';
-import {addDoc} from "firebase/firestore";
-import {booksCollectionRef} from "../../../core/base";
-import './add-book.css'
-import {SubmitHandler} from "react-hook-form";
-import {IBook} from "../../../core/book";
-import Form from "./Form"
+import {addDoc} from 'firebase/firestore';
+import {booksCollectionRef} from '../../../core/base';
+import './add-book.css';
+import {SubmitHandler} from 'react-hook-form';
+import {IBook} from '../../../core/book';
+import Form from './Form';
 
 interface IProps {
     updateBooks: () => Promise<void>;

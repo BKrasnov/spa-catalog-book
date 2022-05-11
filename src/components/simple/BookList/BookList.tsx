@@ -5,7 +5,7 @@ import Book from '../../ui/Book/Book'
 
 interface BookListProps{
     books: IBook[];
-    updateBooks: () => Promise<void>
+    updateBooks: () => Promise<void>;
 }
 
 /**

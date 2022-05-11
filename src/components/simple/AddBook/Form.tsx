@@ -14,12 +14,12 @@ interface IProps{
 const Form: React.FC<IProps> = (props) => {
     const {
         onSubmit
-    } = props
+    } = props;
     const {
         register, handleSubmit, formState: {errors, isValid}
     } = useForm<IBook>({
         mode: 'onChange'
-    })
+    });
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className='form-adding-book'>

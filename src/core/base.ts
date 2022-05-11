@@ -18,4 +18,4 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 /** Collection of books from the Firebase. */
-export const booksCollectionRef = collection(db, 'books')
+export const booksCollectionRef = collection(db, 'books');

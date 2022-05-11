@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './sass/style.css'
+import './sass/style.css';
 import {IBook} from './core/book';
 import {getDocs} from 'firebase/firestore';
 import {booksCollectionRef} from "./core/base";

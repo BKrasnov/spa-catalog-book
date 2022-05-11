@@ -1,5 +1,5 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
-import './modal.css'
+import './modal.css';
 import {IBook} from '../../../core/book';
 import {doc, updateDoc} from 'firebase/firestore';
 import {db} from '../../../core/base';
@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         year: book.year,
         rating: book.rating,
         isbn: book.isbn,
-    })
+    });
     const {title, authors, year, rating} = value;
 
     /** data modification function */

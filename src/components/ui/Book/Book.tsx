@@ -29,11 +29,11 @@ const Book: React.FC<BookProps> = (props) => {
         <>
             <div className="book">
                 <div className="book__description">
-                    <div>{book.title === undefined ? 'Нет данных' : book.title}</div>
-                    <div>{book.authors === undefined ? 'Нет данных' : book.authors}</div>
-                    <div>{book.year === undefined ? 'Нет данных' : book.year}</div>
-                    <div>{book.rating === undefined ? 'Нет данных' : book.rating}</div>
-                    <div>{book.isbn === undefined ? 'Нет данных' : book.isbn}</div>
+                    <div>{book.title === undefined || null ? 'Нет данных' : book.title}</div>
+                    <div>{book.authors === undefined || null ? 'Нет данных' : book.authors}</div>
+                    <div>{book.year === undefined || null ? 'Нет данных' : book.year}</div>
+                    <div>{book.rating === undefined || null ? 'Нет данных' : book.rating}</div>
+                    <div>{book.isbn === undefined || null ? 'Нет данных' : book.isbn}</div>
                 </div>
                 <button className="book__button-update" onClick={() => {
                     setModalActive(true)
